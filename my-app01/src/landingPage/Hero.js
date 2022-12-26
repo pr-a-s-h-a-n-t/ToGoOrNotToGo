@@ -47,16 +47,20 @@ function Hero() {
     );
   }
   const handleListing = () => {
+    setInput("")
     setIsListening(true);
+
     microphoneRef.current.classList.add("listening");
     SpeechRecognition.startListening({
       continuous: true,
     });
   };
   const stopHandle = () => {
+    console.log("Speech Recognition stopped");
     setIsListening(false);
     microphoneRef.current.classList.remove("listening");
     SpeechRecognition.stopListening();
+    console.log("Speech Recognition stopped");
   };
   const handleReset = () => {
     stopHandle();
@@ -88,7 +92,7 @@ function Hero() {
           alignItems: "center",
         }}
       />
-       {(input && input.length > 0) || (transcript && transcript.length > 0) ? (
+       {input  ||  transcript  ? (
         <CancelIcon
           onClick={() =>{
             stopHandle();
@@ -109,7 +113,7 @@ function Hero() {
       ) : (
         ""
       )}
-      <button>Search</button>
+      <button  >Search</button>
     </div>
   );
 }
