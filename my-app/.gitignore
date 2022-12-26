@@ -23,4 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 
- 
+# files
+my-app\src\component\speechRec/
